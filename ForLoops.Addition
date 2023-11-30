@@ -1,0 +1,33 @@
+// Author:  Sami Villatoro
+// Program: Program will add up all integers from 1 to the user's given integer.
+// Created: 10/04/2023
+// Updated: 11/30/2023 
+// Pre:     None.
+// Post:    Total is assigned to 'total' and displays it to the user.
+
+
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+    int num;
+    int sum;
+
+    cout << "Enter a positive integer to find the summation of"
+         << " all numbers from 1 to the given number." << endl;
+    cin >> num;
+    
+    // TODO - Add your code here
+    sum = 0;
+    
+    for (int i = 1; i <= num; i++) {
+        sum += num;
+    }
+
+
+    cout << "Total : " << sum << endl;
+    
+    return 0;
+}
