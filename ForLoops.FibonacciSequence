@@ -1,0 +1,49 @@
+// Author:  Sami Villatoro
+// Program: This program will print the fibonacci sequence up to an integer n.
+// Created: 10/05/2023
+// Updated: 11/30/2023 
+// Pre:     None.
+// Post:    Displays the fibonacci sequence of user's chosen integer.
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int num, even=0, odd=0;
+
+    // Prompt the user for a number:
+    cout << "Enter a number to print a fibonacci sequence: ";
+    cin >> num;
+    cout << endl;
+
+    // Validate input, then print the fibonacci sequence:
+    // Compute the number of even and odd numbers in the sequence:
+    if(num >= 0 && num <= 50) {
+        
+        int a = 0, b = 1, c;
+        for (int i = 0; a <= num; i++) {
+            cout << a;
+            if (a % 2 == 0) {
+                even++;
+            } else {
+                odd++;
+            }
+            if(i != num) {
+                cout << ", ";
+            }
+            c = a + b;
+            a = b;
+            b = c;
+        }
+    }
+    else {
+            cout << "ERROR: Valid numbers are 0 to 50\n";
+            exit (0);
+        }
+    cout << "\nNumber of Even Numbers = " << even;
+    cout << "\nNumber of Odd Numbers = " << odd << endl << endl;
+
+    return 0;
+}
