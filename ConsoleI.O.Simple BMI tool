@@ -1,0 +1,36 @@
+// Author:   Sami Villatoro
+// Program:  Takes user's weight and height to calculate BMI
+// Created:  9/07/2023
+// Updated:  11/30/2023
+// Pre:      None
+// Post:     Displays the user's BMI
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // Declare the rest of the variables (weight, height, bmi)
+    string name;
+    float weight, height, bmi;
+    
+
+    // Prompt the user for name and store:
+    cout << "What is your name?" << endl;
+    cin >> name;
+
+    // Prompt for and store the user's weight and height:
+    cout << "What is your weight (lbs.)? " << endl;
+    cin >> weight;
+    cout << "What is your height (inches) [1 foot = 12 inches]? " << endl;
+    cin >> height;
+
+    // Calculate and assign the user's BMI to the appropriate variable:
+    // BMI = (weight / (height(height)) * 703
+    bmi = weight / (height*height) * 703;
+
+    // Display the user's BMI to the console:
+    cout << "Your bmi is " << bmi << endl;
+    // Exit the program:
+    return 0;
+}
