@@ -1,0 +1,21 @@
+// Author: Sami Villatoro
+// Program: The program will convert user's number of pounds lifted and convert them to kilograms.
+// Created: 9/04/2023
+// Updated: 11/30/2023
+// Pre:     None  
+// Post:    The program will print the number of kilograms the user can lift.
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int k;
+
+    cout << "Many pounds can you lift?" << endl;
+    cin >> k;
+    cout << "Wow. That means you can lift " << (k/2.20462) << " kilograms." << endl;
+
+    return 0;
+}
