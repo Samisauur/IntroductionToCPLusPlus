@@ -1,0 +1,62 @@
+// Author:  Sami Villatoro
+// Program: Calculates the average grades of several students in South Park, CO and save the results in a file.
+// Created: 11/28/2023
+// Pre:     None
+// Post:    Takes data from a file of four students and creates a new file with each student's grade average.
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    
+    string name;
+    int studentId, grade1, grade2, grade3, grade4;
+    double average;
+    
+    // Declare input file stream variable and open the input file:
+    ifstream fin;
+    fin.open("Student_data.txt");
+    
+    // Declare output file stream variable and open the output file:
+    ofstream fout;
+    fout.open("Data written to averages.txt");
+    
+    // Error check to ensure the input file opened:
+    if (!fin) {
+        cout << "Could not open file. Terminating program." << endl;
+        return -1;
+    }
+    
+    // Write the column headers to output file:
+    fout << left;
+    fout << setw(10) << "SID" << setw(13) << "Name" << "Average" << endl;
+    
+    // Read data from input file, perform calculation, and write data to output file (x4):
+    fin >> studentId >> name >> grade1 >> grade2 >> grade3 >> grade4;
+    average = ((static_cast<double>(grade1) + grade2 + grade3 + grade4)/4);
+    fout << setw(10) << studentId << setw(13) << name << fixed << setprecision(2)
+    << average << endl;
+    fin >> studentId >> name >> grade1 >> grade2 >> grade3 >> grade4;
+    average = ((static_cast<double>(grade1) + grade2 + grade3 + grade4)/4);
+    fout << setw(10) << studentId << setw(13) << name << fixed << setprecision(2)
+    << average << endl;
+    fin >> studentId >> name >> grade1 >> grade2 >> grade3 >> grade4;
+    average = ((static_cast<double>(grade1) + grade2 + grade3 + grade4)/4);
+    fout << setw(10) << studentId << setw(13) << name << fixed << setprecision(2)
+    << average << endl;
+    fin >> studentId >> name >> grade1 >> grade2 >> grade3 >> grade4;
+    average = ((static_cast<double>(grade1) + grade2 + grade3 + grade4)/4);
+    fout << setw(10) << studentId << setw(13) << name << fixed << setprecision(2)
+    << average << endl;
+    
+    cout << "Data written to averages.txt" << endl;
+    
+    // Close the input and output files:
+    fin.close();
+    fout.close();
+    
+    // Exit the program:
+    return 0;
+}
