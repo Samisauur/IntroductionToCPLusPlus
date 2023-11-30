@@ -1,0 +1,59 @@
+// Author:  Sami Villatoro
+// Program: Asks user whether they believe Star Trek is better than Star Wars.
+// Created: 10/05/2023
+// Updated: 11/30/2023
+// Pre:     None
+// Post:    50/50 chance the user chooses the wrong answer!
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+     char answer;
+     string message;
+
+     cout << "Is Star Trek better than Star Wars? ('Y' or 'N')" << endl;
+     cin >> answer;
+
+     // Change the following IF-ELSE statement to an equivalent switch statement.
+/*
+     if (answer == 'y' || answer == 'Y')
+     {
+          cout << "You think Star Trek is better than Star Wars..." << endl;
+          message = "Wrong!";
+     }
+     else if (answer == 'n' || answer == 'N')
+     {
+          cout << "You do not think think Star Trek is better than Star Wars..." << endl;
+          message = "Correct!" ;
+     }
+     else
+     {
+          message = "Invalid Input.";
+     }
+
+     cout << message << endl;
+*/
+    switch(answer) {
+        case 'Y':
+        case 'y':
+            cout << "You think Star Trek is better than Star Wars..." << endl;
+            message = "Wrong!";
+            break;
+        case 'N':
+        case 'n':
+            cout << "You do not think think Star Trek is better than Star Wars..." << endl;
+            message = "Correct!";
+            break;
+            
+        default:
+            message = "Invalid input.";
+        
+    }
+    
+    cout << message << endl;
+    
+     return 0;
+}
