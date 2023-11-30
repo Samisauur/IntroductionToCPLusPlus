@@ -1,0 +1,107 @@
+// Author:  Sami Villatoro
+// Program: Gives user options for device plans and calculates the total monthly payment.
+// Created: 9/28/2023
+// Updated: 11/30/2023
+// Pre:     None
+// Post:    Displays monthly payment.
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+int main()
+{
+    char user_choice,user_choice1;  //user's choice
+    double price; //price of monthly package
+
+    // Display the list of device plans:
+    cout << "P: iPhone - From $33.29 per month." << endl;
+    cout << "AppleCare is $7.99 per month." << endl << endl;
+    cout << "M: Mac - From $83.25 per month." << endl;
+    cout << "AppleCare is $20.75 per month." << endl << endl;
+    cout << "W: Watch - From $8.29 per month." << endl;
+    cout << "AppleCare is $2.49 per month." << endl << endl;
+    cout << "A: iPad - From $49.91 per month." << endl;
+    cout << "AppleCare is $3.49 per month." << endl << endl;
+
+    // Ask the user for their plan choice:
+    cout << "Enter the package name you wish to purchase: ";
+    cin >> user_choice;
+
+    // Use a switch statement to evaluate the total monthly price: 
+    switch(user_choice) {
+        case 'P':
+        case 'p':
+            cout << "Would you like to purchase the AppleCare? (Y/N)";
+            cin >> user_choice1;
+            switch(user_choice1) {
+                case 'Y':
+                case 'y':
+                    price = 33.29 + 7.99;
+                break;
+
+                case 'N':
+                case 'n':
+                    price = 33.29;
+                break;
+            }
+            break;
+        case 'M':
+        case 'm':
+            cout << "Would you like to purchase the AppleCare? (Y/N)";
+            cin >> user_choice1;
+            switch(user_choice1) {
+                case 'Y':
+                case 'y':
+                    price = 83.25 + 20.75;
+                break;
+
+                case 'N':
+                case 'n':
+                    price = 83.25;
+                break;
+            }
+        break;
+        case 'W':
+        case 'w':
+            cout << "Would you like to purchase the AppleCare? (Y/N)";
+            cin >> user_choice1;
+            switch(user_choice1) {
+                case 'Y':
+                case 'y':
+                    price = 8.29 + 2.49;
+                break;
+
+                case 'N':
+                case 'n':
+                    price = 8.29;
+                break;
+            }
+        break;
+        case 'A':
+        case 'a':
+            cout << "Would you like to purchase the AppleCare? (Y/N)";
+            cin >> user_choice1;
+            switch(user_choice1) {
+                case 'Y':
+                case 'y':
+                    price = 49.91 + 3.49;
+                break;
+
+                case 'N':
+                case 'n':
+                    price = 49.91;
+                break;
+            }
+        break;
+        default:
+        cout << "Invalid input, terminating the program.";
+        exit (0);
+
+
+    }
+     cout << "The total price of your monthly package is $" << price << endl;
+    // Exit the program:
+    return 0;
+}
