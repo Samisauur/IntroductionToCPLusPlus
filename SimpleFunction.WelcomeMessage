@@ -1,0 +1,47 @@
+// Author:  Sami Villatoro
+// Program: Program is a rectangle area calculator!
+// Created: 10/18/2023
+// Updated: 11/30/2023
+// Pre:     None
+// Post:    Prints the area of the user's given rectangle.
+
+#include <iostream>
+using namespace std;
+
+// void function to print out to console this welcome message:
+void print_Message() {
+    cout << "Welcome to my fabulous rectangle area calculator!" << endl
+    << "This program will take the length and width of a rectangle, and" << endl
+    << "return the area of that rectangle!"
+    << endl << endl;
+}
+
+// Write a function that will prompt the length and width
+// of a rectangle. Then calculate and return the
+// rectangle area (returns a double). Remember to assign the retuned value
+// to the variable 'area'.
+double calcArea() {
+    
+    double area;
+    int length;
+    int width;
+    
+    cout << "please enter a length : ";
+    cin >> length;
+    cout << "please enter a width: ";
+    cin >> width;
+    area = static_cast <double> (length*width);
+    
+    return area;
+}
+
+int main()
+{
+    print_Message();
+    double area = calcArea();
+    // this should remain inside your main function
+    cout << "Rectangle area is : " << area << endl;
+
+    return 0;
+
+    }
