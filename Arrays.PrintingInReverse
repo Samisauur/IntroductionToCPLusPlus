@@ -1,0 +1,33 @@
+// Author:  Sami Villatoro
+// Program: Program takes 5 characters from user and stores them into an array, then prints them in the reverse order.
+// Created: 11/01/2023
+// Updated: 12/01/2023
+// Pre:     None
+// Post:    Prints user's input in reverse.
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int SIZE = 5;  // size of array
+
+    // Create an array of characters that will hold 5 characters.
+    char userInputs[SIZE];
+
+    cout << "please enter 5 characters : " << endl;
+
+    // For loop takes 5 characters from user and stores them in the array
+    for (int i = 0 ; i < SIZE ; i++)
+    {
+        // Take user's input and store it in the array you created
+        cin >> userInputs[i];
+    }
+
+    // Write a for loop to print the array to the screen in reverse order
+    for (int i = SIZE-1; i >= 0; i--) {
+        cout << userInputs[i];
+    }
+
+    return 0;
+}
