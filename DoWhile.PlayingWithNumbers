@@ -1,0 +1,70 @@
+// Author:  Sami Villatoro
+// Program: This program will play with digits of a number entered by a user.
+// Created: 10
+// Updated: 11/30/2023
+// Pre:     None
+// Post:    Finds minimum value and average of user inputs and prints.
+
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <iomanip>
+using namespace std;
+
+// Function prototypes:
+int getInput();
+int findMin(int num);
+float findAverage(int num);
+int num; //Global Variable, visible in all functions
+
+int main() {
+
+char choice;
+int sum, min_digit;
+float average;
+
+do {
+cout << "Enter an integer [100 - 10000]: " ;
+num = getInput();
+cout << "The integer entered by the user is " << num << endl;
+min_digit = findMin(num);
+cout << "Smallest Digit: " << min_digit << endl;
+average = findAverage(num);
+cout << fixed << setprecision(2) << "Average: " << average << endl;
+cout << "Would you like to Continue: ";
+cin >> choice;
+} while (choice != 'N' && choice != 'n');
+return 0;
+}
+
+// Function definitions
+int getInput () {
+    int num;
+    cin >> num;
+    return num;
+}
+
+int findMin (int n) {
+    int rem, smallest = 10;
+    while (n > 0 ) {
+        rem = n % 10;
+        if (rem < smallest) {
+                smallest = rem;
+        }
+        n = n / 10;
+    }
+    return smallest;
+}
+
+float findAverage (int n) {
+    int rem;
+    float sum = 0, i = 0;
+    while (n > 0 ) {
+        rem = n % 10;
+        sum = sum + rem;
+        i++;
+        n = n / 10;
+    }
+    return (sum/i);
+}
