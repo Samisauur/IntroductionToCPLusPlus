@@ -1,0 +1,43 @@
+// Author:  Sami Villatoro
+// Program: Programs takes the length of a pyramid from user and finds it's volume.
+// Created: 10/17/2023
+// Updated: 12/01/2023
+// Pre:     None
+// Post:    Prints the volume of the given pyramid.
+
+
+#include <iostream>
+using namespace std;
+
+// Function prototypes here
+double getSide();
+double calcVolume(double side);
+void printResults(double volume);
+
+int main() {
+    double side, volume;
+
+// Function calls
+    side = getSide();
+    volume = calcVolume(side);
+    printResults(volume);
+
+    return 0;
+}
+
+// Function definitions
+    double getSide () {
+        double side;
+        cout << "Enter the length of a side of a pyramid: ";
+        cin >> side;
+        return side;
+    }
+    double calcVolume (double side) {
+        double volume;
+        volume = (1.0/3.0)*side * side * side;
+        return volume;
+    }
+    void printResults(double volume) {
+        cout << "The volume of your pyramid is " << volume << " units cubed."
+        << endl;
+    }
