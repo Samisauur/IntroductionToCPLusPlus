@@ -1,0 +1,60 @@
+// Author:  Sami Villatoro
+// Program: Program will ask user to choose between odd, even, or quitting the program.
+// Created: 10/12/2023
+// Updated: 11/30/2023
+// Pre:     None
+// Post:    Prints odd or even numbers based on user's choice.
+
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int choice, number, i = 0;
+
+    while (true) {
+        cout << "What would you like to do?\n"
+              << "1. Find even numbers 0 - N\n"
+              << "2. Find odd numbers 0 - N\n"
+              << "3. Quit program\n"
+              << "Enter your choice: ";
+         cin >> choice;
+
+         if (choice == 1) {
+             cout << "Enter number: ";
+             cin >> number;
+             if (number < 0) {
+                 continue;
+             }
+        cout << "Even numbers: ";
+             i = 0;
+             while(i <= number){
+                cout<< i << " ";
+                i += 2;
+            }
+        cout << endl << endl;
+         } else if (choice == 2) {
+             cout << "Enter number: ";
+             cin >> number;
+             if (number < 0) {
+                 continue;
+             }
+        cout << "Odd numbers: ";
+             i = 0;
+             while(i <= number){
+                cout<< i << " ";
+                i += 1;
+             }
+        cout << endl << endl;
+         } else if (choice == 3) {
+             cout << "Terminating program...";
+             break;
+         } else {
+             cout << "ERROR: Invalid choice. Select a valid menu item.";
+             continue;
+         }
+    }
+    cout << endl;
+
+     return 0;
+}
