@@ -1,0 +1,79 @@
+// Author:  Sami Villatoro
+// Program: Program will take given integer grades and finds how many of each letter grade there are.
+// Created: 11/09/2023
+// Udpated: 12/03/2023
+// Pre:     None
+// Post:    Prints number of A's, B's, C's, D,'s and F's. 
+
+
+#include <iostream>
+using namespace std;
+
+double getAverage(double g[], const int SIZE){
+        double total = 0;
+        for(int i = 0; i < SIZE; i++)
+        {
+            total += g[i];
+    }
+        return total / SIZE;
+}
+
+void getGrades(double g[], const int SIZE)
+{
+    cout << "Please enter 5 grades:" << endl;
+    for(int i = 0; i < SIZE; i++){
+        cin >> g[i];
+    }
+}
+// Function definitions
+void countLetterGrades(double grades[], const int SIZE, int &numberOfAs,
+int &numberOfBs, int &numberOfCs, int &numberOfDs,
+int &numberOfFs){
+   for (int i = 0; i < SIZE; i++){
+    if (grades[i] >= 90) {
+        numberOfAs += 1;
+    }
+    else if (grades[i] >= 80){
+        numberOfBs += 1;
+    }
+    else if  (grades[i] >= 70){
+        numberOfCs += 1;
+    }
+    else if (grades[i] >= 60){
+        numberOfDs += 1;
+    }
+    else
+        numberOfFs += 1;
+   }
+}
+
+void printData(double average, int numberOfAs,
+int numberOfBs, int numberOfCs, int numberOfDs,
+int numberOfFs ) {
+    cout << "Average: " << average << endl;
+    cout << "Number of A's: " << numberOfAs << endl;
+    cout << "Number of B's: " << numberOfBs << endl;
+    cout << "Number of C's: " << numberOfCs << endl;
+    cout << "Number of D's: " << numberOfDs << endl;
+    cout << "Number of F's: " << numberOfFs << endl;
+}
+
+int main() {
+  const int SIZE = 5;
+  double grades[SIZE],
+  average;
+  int numberOfAs = 0,
+  numberOfBs = 0,
+  numberOfCs = 0,
+  numberOfDs = 0,
+  numberOfFs = 0;
+
+// Function calls
+  getGrades (grades, SIZE);
+  average = getAverage(grades, SIZE);
+  countLetterGrades (grades, SIZE, numberOfAs, numberOfBs, numberOfCs,
+  numberOfDs, numberOfFs);
+  printData (average, numberOfAs, numberOfBs, numberOfCs,
+  numberOfDs, numberOfFs);
+return 0;
+}
