@@ -1,0 +1,175 @@
+// File Name: main.cpp
+// Author: Sami Villatoro
+// Collaborators: None
+// Date: 1/26/2024
+// CS 2308 Spring 2024
+
+// This program will track the medals won by countries
+// participating at the Olympic Games. 
+
+#include <iostream>
+#include <strings> 
+#include <iomanip> 
+using namespace std; 
+
+// Structure declaration of Country
+struct Country {
+    string name; 
+    int gold; 
+    int silver; 
+    int bronze;
+}; 
+
+// Function prototypes
+void showResults (Country countries[]);
+void addMedal (Country countries[], int country_number, char medal); 
+int totalMedals (Country countries[]); 
+int mostTotalMedals (Country countries[]);
+
+int main() {
+
+const int NUM_COUNTRIES = 8;                           // Number of max countries in structure array
+int countryNumber;                                     // User's chosen country number
+char medalType;                                        // User's chosen country's medal type
+int mostMedalsIndex = 0;                               // Tracks index of country with most medals 
+
+Country countries[NUM_COUNTRIES] = {
+    {"Australia", 11, 14, 12},
+    {"Canada", 5, 0, 1},
+    {"China", 9, 14, 11},
+    {"Great Britain", 8, 4, 8},
+    {"Japan", 8, 10, 10},
+        {"Netherlands", 7, 6, 7},
+        {"Russia", 6, 10, 8},
+        {"USA", 10, 6, 7}
+    };
+    
+    // Call function to show table of countries
+    showResults(countries);
+    
+    // Promts user to chose a country number
+    cout << "Enter the country number (0 to quit):" << endl;
+    cin >> countryNumber;
+    
+    // Prompts user to enter medal type to update
+    while (countryNumber !=0)
+    {
+        cout << "Enter the medal type (G,S, or B):" << endl;
+        cin >> medalType;
+        
+        addMedal(countries, countryNumber, medalType);
+        
+        cout << "Enter the country number (0 to quit):" << endl;
+        cin >> countryNumber;
+    }
+
+    
+    // Outputs the total medals awarded
+    cout << "Total medals awarded: "
+        <<totalMedals(countries) << endl;
+    
+    // Outputs the country with most medals
+    mostMedalsIndex = mostTotalMedals(countries);
+    cout << "Country with the most total medals: "
+    << countries[mostMedalsIndex].name << endl;
+    
+    
+    return 0;
+    
+}
+
+
+// Definition of function showResults.
+// This function displays the table of countries and their data.
+void showResults (Country countries[])
+{
+    // Display the colomn headers
+    cout << left
+    << setw(3) << "N"
+    << setw(15) << "Country"
+    << right
+    << setw(10) << "Gold"
+    << setw (10) << "Silver"
+    << setw (10) << "Bronze"
+    << setw(10) << "Total"
+    << endl;
+    
+    for (int i = 0; i < 8; i++)
+    {
+        // Display the items in array of structs
+        cout << left
+        << setw(3) << i+1;
+        cout << setw(15) << countries[i].name
+        << right
+        << setw(10) << countries[i].gold
+        << setw (10) << countries[i].silver
+        << setw (10) << countries[i].bronze
+        << setw(10) << (countries[i].gold
+                        + countries[i].silver
+                        + countries[i].bronze)
+        << endl;
+    }
+}
+
+
+// Definition of function totalMedals.
+// This function calculates the total medals awarded to all countries.
+int totalMedals (Country countries[])
+{
+    int total = 0;      // Declare and initialize total
+    for (int i = 0; i < 8; i++)
+    {
+        // Calculate the total number of medals and returns total
+        total += countries[i].gold + countries[i].silver
+            + countries[i].bronze;
+    }
+    return total;
+}
+
+
+// Definition of function mostTotalMedals.
+// This function finds which country was awarded most medals and displays the name
+int mostTotalMedals (Country countries[])
+{
+    int mostTotal = 0;
+    int countryIndex = 0;
+    
+    for (int i = 0; i < 8; i++)
+    {
+        int currentTotal = countries[i].gold
+                        + countries[i].silver
+                        + countries[i].bronze;
+        
+        if (currentTotal > mostTotal)
+        {
+            mostTotal = currentTotal;
+            countryIndex = i;
+        }
+    }
+    return countryIndex;
+}
+
+
+// Definition of addMedal function.
+// This function allows the user to update medals added to selected country
+void addMedal (Country countries[], int country_number, char medal)
+{
+    int countryIndex = country_number - 1;
+    switch (medal)
+    {
+        case 'G':
+        case 'g':
+            countries[countryIndex].gold++;
+            break;
+        case 'S':
+        case 's':
+            countries[countryIndex].silver++;
+            break;
+        case 'B':
+        case 'b':
+            countries[countryIndex].bronze++;
+            break;
+    }
+    showResults(countries);
+}
+
