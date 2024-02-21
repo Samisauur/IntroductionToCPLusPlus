@@ -1,0 +1,85 @@
+// Program: Takes an unsorted array of candidate results, sorts it, and displays the percentage won by each candidate.
+// Author: Sami Villatoro
+// Collaborators: N/A
+// 2/20/2024
+
+#include <string>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+
+struct Candidates {
+    string name;
+    string party;
+    int vote;
+};
+
+
+const int SIZE = 4;
+
+// Prototype
+void bubbleSort(Candidates array[], int SIZE);
+
+
+int main() {
+    Candidates array[SIZE] = {
+        {"Antoinette", "REPUBLICAN", 4},
+        {"Joel", "DEMOCRAT", 1},
+        {"Elena", "DEMOCRAT", 3},
+        {"Sami", "REPUBLICAN", 2 }
+    };
+
+    // Display unsorted array
+    cout << "Unsorted array: " << endl;
+    cout << "________________" << endl;
+    for (int i = 0; i < SIZE; i++) {
+        cout << left << setw(10) << array[i].name << "\t"
+            << array[i].party << "\t"
+            << array[i].vote << endl;
+    }
+    cout << endl;
+    cout << "Sorted array: " << endl;
+    cout << "________________" << endl;
+
+
+    // Function call
+    bubbleSort(array, SIZE);
+
+    int totalVotes = 0;
+    for (int i = 0; i < SIZE; i++) {
+        totalVotes += array[i].vote;
+    }
+
+    // Display sorted array
+    for (int i = 0; i < SIZE; i++) {
+        double percentage = ((static_cast<double>(array[i].vote) / totalVotes) * 100.0);
+        cout << left << setw(10) << array[i].name << "\t"
+            << array[i].party << "\t"
+            << array[i].vote << "\t"
+            << fixed << setprecision(2) << percentage << "%" << endl;
+    }
+   return 0;
+}
+
+
+// Function sorts votes of candidates in descending order
+// so that winner is displayed first
+void bubbleSort(Candidates array[], int SIZE) {
+    Candidates temp;
+    bool swapped;
+    do {
+        swapped = false;
+        for (int i = 0; i < SIZE - 1; i++) {
+            if (array[i].vote < array[i+1].vote) {
+                temp = array[i];
+                array[i] = array[i+1];
+                array[i+1] = temp;
+                swapped = true;
+            }
+        }
+
+    } while (swapped == true);
+}
+
