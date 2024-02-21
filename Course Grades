@@ -1,0 +1,68 @@
+// Program: main.cpp
+// Author: Sami Villatoro
+// Collaborators: N/A
+// 2/20/2024
+
+// This program reads a students information from a user's file and writes the information to another file.
+
+
+#include <string>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+int main() {
+ /* TODO: Declare any necessary variables here. */
+    fstream inputFile;
+    string fileName; 
+    const int MAX_STUDENTS = 20;
+    string lastNames[MAX_STUDENTS];
+    string firstNames[MAX_STUDENTS]; 
+    int midTerm1[MAX_STUDENTS];
+    int midTerm2[MAX_STUDENTS];
+    int finalScore[MAX_STUDENTS]; 
+    double midTerm1Sum = 0.0;
+    double midTerm2Sum = 0.0;
+    double finalScoreSum = 0.0; 
+    
+    int count = 0;
+    
+   /* TODO: Read a file name from the user and read the tsv file here. */
+   cin >> fileName; 
+   inputFile.open(fileName); 
+   
+   while (inputFile >> lastNames[count] >> firstNames[count]
+         >> midTerm1[count] >> midTerm2[count] >> finalScore[count]) {
+            midTerm1Sum += midTerm1[count];
+            midTerm2Sum += midTerm2[count]; 
+            finalScoreSum += finalScore[count];
+            count++;
+   }
+    inputFile.close();
+   /* TODO: Compute student grades and exam averages, then output results to a text file here. */
+   ofstream outputFile; 
+   outputFile.open("report.txt"); 
+   
+   for (int i = 0; i < count; i++) {
+        double averageScore = (midTerm1[i] + midTerm2[i] + finalScore[i]) / 3.0;
+        char grade; 
+        if (averageScore >= 90) grade = 'A'; 
+        else if (averageScore >= 80) grade = 'B';
+        else if (averageScore >= 70) grade = 'C';
+        else if (averageScore >= 60) grade = 'D';
+        else grade = 'F';
+        
+        outputFile << lastNames[i] << "\t" << firstNames[i] << "\t" 
+                    << midTerm1[i] << "\t" << midTerm2[i] << "\t"
+                    << finalScore[i] << "\t" << grade << endl;
+   }
+   outputFile << endl;
+   outputFile << "Averages: " 
+                << setprecision(2) << fixed << "midterm1 " << (midTerm1Sum / count) << ", "
+                << setprecision(2) << fixed << "midterm2 " << (midTerm2Sum / count) << ", "
+                << setprecision(2) << fixed << "final " << (finalScoreSum / count) << endl; 
+   outputFile.close(); 
+   return 0;
+}
